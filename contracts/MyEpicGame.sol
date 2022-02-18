@@ -137,6 +137,8 @@ contract MyEpicGame is ERC721 {
 
         // Increment the tokenId for the next person that uses it.
         _tokenIds.increment();
+
+        emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
     }
 
     function tokenURI(uint256 _tokenId)
@@ -219,6 +221,8 @@ contract MyEpicGame is ERC721 {
         // Console for ease.
         console.log("Player attacked boss. New boss hp: %s", bigBoss.hp);
         console.log("Boss attacked player. New player hp: %s\n", player.hp);
+
+        emit AttackComplete(bigBoss.hp, player.hp);
     }
 
     function checkIfUserHasNFT()
